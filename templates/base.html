@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flask Feedback</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<nav>
+  <a href="/">Flask Feedback</a>
+  <ul>
+    <li class="navItem">
+      {% if 'username' in session %}
+      <a href="/logout">Logout</a>
+      {% else %}
+      <a href="/login">Login</a>
+      {% endif %}
+    </li>
+  </ul>
+</nav>
+<div>
+  {% for msg in get_flashed_messages() %}
+  <div class="flashed">{{ msg }}</div>
+  {% endfor %}
+
+  {% block content %}
+  
+  {% endblock %}
+</div>
+
+</body>
+</html>
